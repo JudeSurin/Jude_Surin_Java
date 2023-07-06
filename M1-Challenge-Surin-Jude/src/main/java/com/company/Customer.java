@@ -3,24 +3,29 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer {
+public class Customer
+{
     private int id;
     private String name;
     private final List<AccountRecord> charges = new ArrayList<>();
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getBalance() {
+    public int getBalance()
+    {
         int balance = 0;
         for (AccountRecord record : charges) {
             balance += record.getCharge();
@@ -28,7 +33,8 @@ public class Customer {
         return balance;
     }
 
-    public List<AccountRecord> getCharges() {
+    public List<AccountRecord> getCharges()
+    {
         return charges;
     }
 
@@ -41,3 +47,4 @@ public class Customer {
                 '}';
     }
 }
+
