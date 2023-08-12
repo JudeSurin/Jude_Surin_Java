@@ -3,48 +3,89 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customer
-{
+public class Customer {
+    /**
+     * Company ID number
+     */
     private int id;
+
+    /**
+     * Company Name
+     */
     private String name;
+
+    /**
+     * contains customer's charges
+     */
     private final List<AccountRecord> charges = new ArrayList<>();
 
-    public int getId()
-    {
+    /**
+     * getting ID number
+     * @return identification number of customer
+     */
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    /**
+     * setting ID number
+     * @param id id number
+     */
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setName(String name)
-    {
+    /**
+     * getting customer name
+     * @return customer name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * setting the customer's name
+     * @param name Customer's name
+     */
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getBalance()
-    {
-        int balance = 0;
-        for (AccountRecord record : charges) {
-            balance += record.getCharge();
+    /**
+     * loops through charges list and returns the account balance
+     * @return account balance
+     */
+    public int getBalance() {
+        int total = 0;
+        for (var charge : charges) {
+            total += charge.getCharge();
         }
-        return balance;
+        return total;
     }
 
-    public List<AccountRecord> getCharges()
-    {
+    /**
+     * adds charge to charges list
+     *
+     * @param charge a charge amount
+     * @param chargeDate date charge was made
+     */
+    public void addCharges(int charge, String chargeDate){
+        AccountRecord record = new AccountRecord();
+        record.setCharge(charge);
+        record.setChargeDate(chargeDate);
+        charges.add(record);
+    }
+
+    /**
+     * gets customer's full account record
+     * @return account record
+     */
+    public List<AccountRecord> getCharges() {
         return charges;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", balance=" + getBalance() +
-                '}';
+        return "id: " + id + " name: " + name + " balance: " + getBalance();
     }
 }
-
